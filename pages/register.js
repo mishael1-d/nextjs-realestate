@@ -1,8 +1,12 @@
 import React from "react";
 import RegisterForm from "../components/RegisterForm";
 
-function register() {
+function Register() {
   return <RegisterForm />;
 }
 
-export default register;
+export default Register;
+
+Register.getLayout = function PageLayout(page) {
+  return <>{page}</>;
+};

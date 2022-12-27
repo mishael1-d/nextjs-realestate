@@ -5,7 +5,12 @@ import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
-    return Component.getLayout(<Component {...pageProps} />);
+    return Component.getLayout(
+      <>
+        <ToastContainer />
+        <Component {...pageProps} />
+      </>
+    );
   }
   return (
     <>

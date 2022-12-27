@@ -33,3 +33,7 @@ body {
   position: absolute !important;
   cursor: pointer !important;
 }
+
+.loginform .owl-nav {
+  display: none !important;
+}
