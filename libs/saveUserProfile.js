@@ -6,7 +6,6 @@ const saveUserProfile = async (
   lastName,
   email,
   password,
-  confirmPassword,
   role
 ) => {
   try {
@@ -16,7 +15,6 @@ const saveUserProfile = async (
       lastName,
       email,
       password,
-      confirmPassword,
       role,
     });
   } catch (e) {

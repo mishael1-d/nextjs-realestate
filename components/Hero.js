@@ -17,7 +17,7 @@ const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
 });
 function Hero() {
   return (
-    <div className="relative mx-auto h-[100vh]">
+    <div className="relative mx-auto max-h-[100vh]">
       <OwlCarousel autoplay items={1} nav={true} loop={true}>
         <video autoPlay loop muted playsInline className={styles.myVideo}>
           <source src="/assets/bg-video1.mp4" type="video/mp4" />
