@@ -10,6 +10,7 @@ import FormHeader from "./common/FormHeader";
 import SocialMediaButtons from "./common/SocialMediaButtons";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import useStateContext from "../customHooks/useStateContext";
 
 function RegisterForm() {
   const [registerInfo, setregisterInfo] = useState({
@@ -22,6 +23,9 @@ function RegisterForm() {
   });
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const { setUser } = useStateContext();
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -42,9 +46,22 @@ function RegisterForm() {
       setLoading(false);
       return toast.error("Passwords do not match");
     }
-    await register(email, password, confirmPassword)
-      .then(async () => {
+    await register(email, password)
+      .then(async (res) => {
         toast.success("User created successfully");
+        setUser({
+          accessToken: res.user.accessToken,
+          userRole: role,
+          userDetails: {
+            firstName,
+            lastName,
+            email,
+            photoUrl: res.user.photoURL,
+            uid: res.user.uid,
+            phoneNumber: res.user.phoneNumber,
+            isVerified: res.user.emailVerified,
+          },
+        });
         // add this user to the users collection on the firestore database
         await saveUserProfile(firstName, lastName, email, password, role)
           .then(() => {
@@ -54,6 +71,7 @@ function RegisterForm() {
           })
           .catch((e) => {
             console.error("Error adding document: ", e);
+            toast.error("Unable to save user details");
             setLoading(false);
           });
         setregisterInfo({

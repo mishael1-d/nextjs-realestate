@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { login, signInWithGoogle } from "../libs/auth";
+import { login, signInWithFacebook, signInWithGoogle } from "../libs/auth";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import FormFields from "./common/FormFields";
@@ -58,7 +58,7 @@ function LoginForm() {
         <p>Continue with:</p>
       </div>
       <div className="w-full bg-[#263C41] text-white flex p-2 justify-center items-center space-x-6 text-xl mb-4">
-        <SocialMediaButtons name="Facebook" />
+        <SocialMediaButtons name="Facebook" clickHandler={signInWithFacebook} />
         <SocialMediaButtons name="Google" clickHandler={signInWithGoogle} />
       </div>
       <div className="w-full flex justify-between items-center">

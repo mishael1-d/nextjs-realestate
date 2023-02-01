@@ -6,7 +6,7 @@ function SocialMediaButtons({ name, clickHandler }) {
   return (
     <>
       {name === "Facebook" ? (
-        <span className="cursor-pointer">
+        <span className="cursor-pointer" onClick={clickHandler}>
           <BsFacebook />
         </span>
       ) : null}
