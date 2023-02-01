@@ -95,7 +95,7 @@ function LoginForm() {
           loading={loading}
         />
         <div className="mt-4 flex justify-between items-center">
-          <Link href="/#" className="text-[#263C41] font-medium">
+          <Link href="/forgot" className="text-[#263C41] font-medium">
             Forgot Password?
           </Link>
           <p>

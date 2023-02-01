@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   signInWithPopup,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { toast } from "react-toastify";
 
@@ -41,4 +42,8 @@ export const signInWithFacebook = () => {
         toast.error("Login cancelled by user");
       }
     });
+};
+
+export const forgotPasswordAuth = (email) => {
+  return sendPasswordResetEmail(auth, email);
 };
